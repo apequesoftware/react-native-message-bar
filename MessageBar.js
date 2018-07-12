@@ -145,6 +145,12 @@ class MessageBar extends Component {
       viewLeftInset: props.viewLeftInset || def.viewLeftInset || 0,
       viewRightInset: props.viewRightInset || def.viewRightInset || 0,
 
+      viewBorderRadius: props.viewBorderRadius || def.viewBorderRadius || 0,
+      viewOpacity: props.viewOpacity || def.viewOpacity || 1,
+      viewShadowColor: props.viewOpacity || def.viewOpacity || 'transparent',
+      viewShadowOpacity: props.viewShadowOpacity || def.viewShadowOpacity || 0.5,
+      viewShadowRadius: props.viewShadowRadius || def.viewShadowRadius || 10,
+
       /* Padding around the content, useful if you want a tiny message bar */
       messageBarPadding: props.messageBarPadding || def.messageBarPadding || 10,
 
@@ -437,6 +443,8 @@ class MessageBar extends Component {
     // Set the animation transformation depending on the chosen animationType, or depending on the state's position if animationType is not overridden
     this._applyAnimationTypeTransformation()
 
+    console.log(this.state);
+
     return (
       <Animated.View
         style={{
@@ -453,12 +461,11 @@ class MessageBar extends Component {
           paddingBottom: this.state.viewBottomInset,
           paddingLeft: this.state.viewLeftInset,
           paddingRight: this.state.viewRightInset,
-          borderRadius: 4,
-          opacity: 0.96,
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 0.8,
-          shadowRadius: 15
+          borderRadius: this.state.viewBorderRadius,
+          opacity: this.state.viewOpacity,
+          shadowColor: this.state.viewShadowColor,
+          shadowOpacity: this.state.viewShadowOpacity,
+          shadowRadius: this.state.viewShadowRadius
         }}>
         <TouchableOpacity
           onPress={() => {
