@@ -443,8 +443,6 @@ class MessageBar extends Component {
     // Set the animation transformation depending on the chosen animationType, or depending on the state's position if animationType is not overridden
     this._applyAnimationTypeTransformation()
 
-    console.log(this.state);
-
     return (
       <Animated.View
         style={{
